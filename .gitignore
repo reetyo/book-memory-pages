@@ -1,0 +1,8 @@
+.DS_Store
+.env
+.env.*
+.openai/
+.codex/
+node_modules/
+tmp/
+*.log

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#edf4f3">
+  <meta name="description" content="用四张卡片记住《关键对话》第3版：何为关键对话、怎么准备、怎么进行、怎么结束。完整中文拆解 STATE、AMPP、ABC、CURE。">
+  <title>关键对话 · 四张记忆卡</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='20' fill='%23325569'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-family='sans-serif' font-size='44' fill='%23ffcf73'%3E4%3C/text%3E%3C/svg%3E">
+  <style>
+    :root{--ink:#263f50;--muted:#596c76;--paper:#fffefa;--blue:#285c7d;--line:#c6d6d8;--radius:26px;--shadow:0 5px 0 rgba(35,67,82,.055)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:24px}body{margin:0;color:var(--ink);background:#edf4f3;font:16px/1.7 "PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased}button,a{-webkit-tap-highlight-color:transparent}button{font:inherit;cursor:pointer}a{color:inherit;text-underline-offset:4px}button:focus-visible,a:focus-visible{outline:3px solid #1c6eb4;outline-offset:5px}button{touch-action:manipulation}p,h1,h2,h3,h4{margin:0}button svg{width:18px;height:18px;vertical-align:-3px;flex-shrink:0}svg{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.wrap{width:min(1180px,calc(100% - 64px));margin:0 auto}.topbar{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #d5e1df;gap:18px}.brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.5px}.brand-mark{display:grid;place-items:center;width:36px;height:36px;background:var(--ink);color:#ffe5a4;border-radius:12px;font:800 23px/1 "Arial Rounded MT Bold",sans-serif;transform:rotate(-7deg)}.edition{font-size:13px;font-weight:500;letter-spacing:.5px;color:var(--muted);border-left:1px solid #bdcccd;padding-left:12px;margin-left:2px}.actions{display:flex;gap:10px}.plain-button{border:1px solid #bacfd0;border-radius:100px;background:rgba(255,255,255,.65);color:var(--ink);padding:8px 17px;font-size:14px;font-weight:600;white-space:nowrap;display:flex;gap:7px;align-items:center;transition:background .2s,transform .2s}.plain-button:hover{background:white;transform:translateY(-1px)}.intro{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;padding:27px 1px 26px}.intro h1{font-size:32px;line-height:1.45;letter-spacing:-.9px;font-weight:800}.intro h1 span{color:#497c88;white-space:nowrap}.intro p{color:var(--muted);font-size:15px;margin-top:6px}.route{display:flex;gap:7px;align-items:center;flex-shrink:0;font-size:13px;letter-spacing:.5px;padding-bottom:6px}.route b{font-weight:600;padding:4px 9px;border-radius:8px}.route b:nth-of-type(1){background:#fae3a6}.route b:nth-of-type(2){background:#cbe5d7}.route b:nth-of-type(3){background:#c8e2f3}.route b:nth-of-type(4){background:#f6d6c8}.route span{color:#78909c}.cards{display:grid;grid-template-columns:1fr 1fr;gap:22px}.memory-card{position:relative;display:flex;flex-direction:column;padding:24px 28px 20px;border-radius:var(--radius);background:var(--card);border:1.5px solid var(--border);box-shadow:var(--shadow);min-width:0;overflow:hidden;transition:box-shadow .2s,transform .2s}.memory-card:hover{box-shadow:0 7px 0 rgba(35,67,82,.075)}.card-one{--card:#fff9e9;--border:#e2d4ac;--accent:#93601c;--badge:#f4d58b;--soft:#fdf0cc;--deep:#805b25}.card-two{--card:#f2f8ed;--border:#c5d9bb;--accent:#39705c;--badge:#c5dfb6;--soft:#e1efd8;--deep:#38644b}.card-three{--card:#edf6fc;--border:#bdd5e5;--accent:#32678b;--badge:#b8d9ee;--soft:#dcecf7;--deep:#315f7d}.card-four{--card:#fff1e9;--border:#e5cbbd;--accent:#a76246;--badge:#f2c5ac;--soft:#fce0cf;--deep:#88573d}.card-top{position:relative;display:flex;gap:10px;min-height:142px;align-items:flex-start}.heading{flex:1;position:relative;z-index:1;padding-top:1px}.step{display:flex;align-items:center;gap:9px;font-size:12px;letter-spacing:1.3px;font-weight:700;color:var(--accent);margin-bottom:10px}.step-number{display:inline-grid;place-items:center;background:var(--badge);border:1px solid color-mix(in srgb,var(--accent),transparent 70%);height:30px;width:34px;border-radius:9px;font:800 18px/1 "Arial Rounded MT Bold",sans-serif;letter-spacing:0}.memory-card h2{font-size:28px;line-height:1.35;letter-spacing:-.6px;font-weight:800;white-space:nowrap}.tagline{font-size:14px;color:var(--accent);font-weight:600;margin-top:7px}.art{width:158px;height:145px;flex:0 0 158px;background-image:url('dogs-storyboard.png');background-size:200% 200%;background-repeat:no-repeat;mix-blend-mode:multiply;border-radius:18px;margin-top:-10px;margin-right:-10px}.art-one{background-position:0 0}.art-two{background-position:100% 0}.art-three{background-position:0 100%}.art-four{background-position:100% 100%}.summary{flex:1}.formula{display:flex;align-items:center;justify-content:space-between;gap:5px;margin:2px 0 15px}.formula b{background:rgba(255,255,255,.8);border:1px solid #e9dab4;border-radius:12px;text-align:center;padding:10px 8px;flex:1;font-size:16px;white-space:nowrap}.formula span{font-size:18px;color:#ad986c}.core{font-size:15px;line-height:1.9;color:#4b6068}.core strong{color:var(--ink);font-weight:700}.small-quote{margin-top:15px;border-left:3px solid var(--badge);padding:2px 0 2px 12px;font-size:15px;color:var(--deep);font-weight:600}.prep-list{display:grid;gap:8px;margin:0;padding:0;list-style:none}.prep-list li{display:flex;align-items:baseline;gap:10px;font-size:15px;color:#536c5e}.prep-list b{flex-shrink:0;background:#e0ecd8;padding:2px 9px;border-radius:6px;font-size:14px;color:#3c624b}.tool-preview{display:grid;grid-template-columns:1fr 1fr;column-gap:20px;row-gap:8px}.tool-preview div{font-size:13px;line-height:1.55}.tool-preview b{font-size:15px;display:block;color:#315d78}.tool-preview p{color:#4c6b7f;margin-top:2px}.tool-preview small{font:600 11px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:1px;color:#5e8298;padding-left:5px}.safety-strip{margin:12px 0 0;font-size:13px;font-weight:600;color:#42647a;border-top:1px dashed #b8d2e2;padding-top:9px}.action-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:2px 0 15px}.action-grid div{background:rgba(255,255,255,.68);border:1px solid #efcfbc;border-radius:12px;text-align:center;padding:8px 1px}.action-grid b{display:block;font-size:15px}.action-grid span{display:block;color:#8b6a57;font:500 10px/1.8 ui-monospace,SFMono-Regular,monospace;letter-spacing:.4px}.open-card{margin-top:20px;background:transparent;border:0;border-top:1px solid color-mix(in srgb,var(--border),transparent 12%);display:flex;justify-content:space-between;align-items:center;padding:13px 0 0;color:var(--accent);font-weight:700;font-size:14px;width:100%;text-align:left}.open-card .arrow{height:27px;width:27px;display:grid;place-items:center;background:rgba(255,255,255,.6);border:1px solid var(--border);border-radius:50%;transition:transform .2s}.open-card:hover .arrow{transform:translateX(4px)}.footnote{display:flex;align-items:flex-start;justify-content:space-between;gap:35px;padding:26px 3px 32px;color:#6a7b82;font-size:12px;line-height:1.8}.footnote p{max-width:690px}.footnote .remember{color:#4e7080;white-space:nowrap;font-size:14px;font-weight:650}.expanded-content{display:none}.detail-content{font-size:16px;line-height:1.85}.detail-content h3{font-size:21px;font-weight:800;line-height:1.5;margin:28px 0 10px;letter-spacing:-.3px;color:var(--deep)}.detail-content h3:first-child{margin-top:0}.detail-content h4{font-size:17px;margin:18px 0 8px}.detail-content p+p{margin-top:10px}.detail-content ul,.detail-content ol{padding-left:22px;margin:10px 0}.detail-content li+li{margin-top:7px}.detail-content strong{font-weight:750}.lead-note{font-size:17px;background:var(--soft);padding:17px 20px;border-radius:15px;color:var(--deep);margin:0 0 24px}.remember-line{border-left:4px solid var(--badge);padding:9px 16px;background:rgba(255,255,255,.65);margin-top:17px;font-weight:600;color:var(--deep)}.detail-row{display:grid;grid-template-columns:34px 1fr;column-gap:12px;padding:12px 0;border-bottom:1px solid color-mix(in srgb,var(--border),transparent 45%)}.detail-row:last-child{border-bottom:0}.letter{display:grid;place-items:center;align-self:start;width:32px;height:32px;border-radius:10px;background:var(--soft);color:var(--accent);font:800 18px/1 "Arial Rounded MT Bold",sans-serif;margin-top:2px}.detail-row h4{margin:0;font-size:16px}.english{display:block;font-size:12px;line-height:1.55;font-weight:500;color:#61798a;letter-spacing:.1px}.detail-row p{margin-top:4px;color:#506474;font-size:15px}.say{margin-top:7px!important;color:var(--deep)!important;background:rgba(255,255,255,.72);padding:7px 11px;border-radius:8px;font-size:14px!important}.hint{color:var(--muted);font-size:14px;margin:12px 0 0}.path-flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:15px;background:var(--soft);border-radius:12px;margin:12px 0}.path-flow b{background:var(--paper);padding:4px 12px;border-radius:8px;font-weight:600}.contrast{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}.contrast div{padding:14px 16px;border-radius:12px;background:rgba(255,255,255,.8);border:1px solid var(--border)}.contrast b{display:block;color:var(--deep);margin-bottom:4px}.check-list{list-style:none;padding-left:0!important}.check-list li{position:relative;padding-left:27px}.check-list li:before{content:'✓';position:absolute;left:0;color:var(--accent);font-weight:800}.source-links{border-top:1px dashed var(--border);margin-top:28px;padding-top:15px;font-size:12px;color:#617581;display:flex;flex-wrap:wrap;gap:5px 15px}.source-links span{width:100%;font-weight:600}.closing-sentence{margin-top:20px;padding:20px;border:1px dashed var(--accent);border-radius:14px;background:rgba(255,255,255,.5)}.closing-sentence small{display:block;font-size:12px;letter-spacing:1px;color:var(--accent);font-weight:700;margin-bottom:6px}.decision-list{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}.decision-list div{border:1px solid var(--border);border-radius:12px;padding:12px 15px;background:rgba(255,255,255,.6)}.decision-list b{display:block;color:var(--deep)}.decision-list p{font-size:14px;margin-top:3px}.end-plan{margin-top:14px;border-radius:15px;border:1px solid var(--border);overflow:hidden}.end-plan div{display:grid;grid-template-columns:70px 1fr;gap:12px;padding:12px 16px;background:rgba(255,255,255,.6)}.end-plan div+div{border-top:1px solid var(--border)}.end-plan b{color:var(--deep)}.dialog{padding:0;border:1px solid var(--border);border-radius:28px;width:min(850px,calc(100% - 40px));max-height:calc(100dvh - 60px);background:var(--card);color:var(--ink);box-shadow:0 25px 100px #12334b40;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#9daeb6 transparent}.dialog::backdrop{background:#173b52a8;backdrop-filter:blur(7px)}.dialog-head{display:flex;align-items:center;justify-content:space-between;gap:15px;position:sticky;top:0;background:var(--card);border-bottom:1px solid var(--border);z-index:5;padding:19px 28px}.dialog-head .step{margin:0}.dialog-head h2{font-size:23px;line-height:1.5;margin-right:auto}.close-dialog{border:1px solid var(--border);background:rgba(255,255,255,.75);border-radius:50%;width:36px;height:36px;display:grid;place-items:center;padding:0;color:var(--ink);flex-shrink:0}.close-dialog:hover{background:white}.dialog-body{padding:25px 34px 36px}.dialog-memory{display:flex;gap:22px;align-items:center;margin:0 0 28px}.dialog-memory .art{margin:0;width:138px;height:138px;flex-basis:138px}.dialog-memory p{font-size:23px;line-height:1.5;font-weight:750;color:var(--deep);letter-spacing:-.4px}.dialog-memory small{font-size:13px;display:block;font-weight:500;color:var(--muted);margin-top:7px}.dialog-footer{border-top:1px solid var(--border);padding-top:24px;margin-top:30px;display:flex;justify-content:space-between;align-items:center;gap:16px;color:var(--muted);font-size:13px}.dialog-footer .plain-button{background:rgba(255,255,255,.7);border-color:var(--border);color:var(--deep)}body.modal-open{overflow:hidden}body.full-view .cards{grid-template-columns:1fr;max-width:900px;margin:0 auto}body.full-view .memory-card{padding:30px 36px}body.full-view .summary{max-width:660px}body.full-view .expanded-content{display:block;margin-top:25px;padding-top:25px;border-top:1px dashed var(--border)}body.full-view .open-card{display:none}body.full-view .card-top{min-height:158px}body.full-view .art{width:170px;height:170px;flex-basis:170px}body.full-view .memory-card h2{font-size:31px}body.full-view .footnote{max-width:900px;margin:0 auto}.no-js-note{padding:15px;background:#fff4da}.no-js-note a{font-weight:700}
+    @media(min-width:1000px){.memory-card{min-height:388px}.card-three,.card-four{min-height:395px}}
+    @media(max-width:1000px){.wrap{width:calc(100% - 44px)}.route{display:none}.memory-card{padding:21px 23px 18px}.art{width:130px;height:130px;flex-basis:130px}.memory-card h2{font-size:25px}.card-top{min-height:135px}.tool-preview{column-gap:10px}.formula b{font-size:14px}.intro h1{font-size:29px}.tool-preview p{font-size:12px}}
+    @media(max-width:740px){.wrap{width:calc(100% - 32px)}.topbar{height:68px}.brand{font-size:14px;gap:9px}.brand-mark{width:31px;height:31px;font-size:21px}.edition{display:none}.actions{gap:7px}.plain-button{font-size:12px;padding:7px 11px}.print-button span{display:none}.print-button{width:34px;height:34px;padding:0;justify-content:center}.intro{padding:23px 0 21px}.intro h1{font-size:26px;letter-spacing:-.6px}.intro p{font-size:13px}.cards{grid-template-columns:1fr;gap:17px}.memory-card{padding:22px 23px 18px}.memory-card h2{font-size:27px}.art{width:148px;height:140px;flex-basis:148px}.card-top{min-height:137px}.formula b{font-size:15px}.tool-preview p{font-size:13px}.tool-preview{column-gap:14px;row-gap:12px}.footnote{padding:22px 2px 28px;flex-direction:column;gap:12px;font-size:11px}.footnote .remember{font-size:13px}.dialog{width:calc(100% - 20px);max-height:calc(100dvh - 24px);border-radius:20px}.dialog-head{padding:15px 18px;gap:9px}.dialog-head h2{font-size:21px}.dialog-head .step-number{width:28px;height:27px;font-size:16px}.dialog-body{padding:19px 21px 26px}.dialog-memory{gap:14px;margin-bottom:21px}.dialog-memory .art{width:112px;height:112px;flex-basis:112px}.dialog-memory p{font-size:21px}.dialog-memory small{font-size:12px}.detail-content{font-size:15px}.detail-content h3{font-size:20px;margin-top:27px}.detail-row{column-gap:9px;grid-template-columns:30px 1fr}.letter{width:28px;height:28px;font-size:16px}.contrast,.decision-list{grid-template-columns:1fr}.lead-note{font-size:16px;padding:14px 16px}.dialog-footer{font-size:12px;gap:9px}body.full-view .memory-card{padding:22px}body.full-view .card-top{min-height:140px}body.full-view .memory-card h2{font-size:27px}body.full-view .art{width:140px;height:140px;flex-basis:140px}}
+    @media(max-width:480px){.card-top .art,body.full-view .card-top .art{width:112px;height:124px;flex-basis:112px}.heading{min-width:0}.memory-card h2,body.full-view .memory-card h2{font-size:25px}.tagline{font-size:13px}.intro h1 span{white-space:normal}.dialog-memory p{font-size:19px}.tool-preview{grid-template-columns:1fr;gap:10px}.tool-preview>div{display:grid;grid-template-columns:82px 1fr;gap:10px}.tool-preview small{display:block;padding-left:0;margin-top:3px}.tool-preview p{margin:0;font-size:13px}}
+    @media(max-width:370px){.wrap{width:calc(100% - 24px)}.memory-card,body.full-view .memory-card{padding:20px 18px 16px}.card-top .art,body.full-view .card-top .art{width:85px;height:104px;flex-basis:85px}.memory-card h2,body.full-view .memory-card h2{font-size:22px}.tagline{font-size:12px}.intro h1{font-size:23px}.formula b{padding:9px 4px;font-size:13px}.dialog-head h2{font-size:19px}.dialog-memory p{font-size:19px}.tool-preview small{display:none}.footnote .remember{white-space:normal}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+    .shelf-back{display:inline-flex;align-items:center;gap:7px;margin-top:17px;font-size:14px;color:#52727d;text-decoration:none}.shelf-back:hover{text-decoration:underline}@media print{.shelf-back{display:none}}
+    @page{size:A4;margin:17mm 15mm}
+    @media print{body{background:white;font-size:11pt;line-height:1.5;color:#203744}.wrap{width:100%;max-width:none}.topbar,.intro,.footnote,.open-card,.dialog,.no-js-note{display:none!important}.cards,body.full-view .cards{display:block;max-width:none}.memory-card,body.full-view .memory-card{break-before:page;display:block;min-height:0;padding:22px;border:1px solid #aaa;box-shadow:none;border-radius:18px;background:white!important;overflow:visible}.memory-card:first-child{break-before:auto}.card-top{min-height:110px}.art,body.full-view .art{width:130px;height:120px;flex-basis:130px;-webkit-print-color-adjust:exact;print-color-adjust:exact}.expanded-content,body.full-view .expanded-content{display:block;margin-top:20px;padding-top:18px;border-top:1px dashed #aaa}.detail-content{font-size:11pt;line-height:1.6}.detail-content h3{font-size:15pt;break-after:avoid}.detail-row,.contrast,.decision-list,.end-plan,.closing-sentence,.lead-note,.remember-line{break-inside:avoid}.source-links{font-size:9pt}.source-links a{text-decoration:none}.summary{max-width:none!important}.card-three .tool-preview{display:none}.safety-strip{display:none}.letter,.step-number,.lead-note,.path-flow{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark" aria-hidden="true">4</span>关键对话 · 记忆小屋<span class="edition">原书第 3 版</span></div>
+      <div class="actions">
+        <button class="plain-button" id="view-toggle" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16M4 12h16M4 19h16"/></svg><span>展开四张卡</span></button>
+        <button class="plain-button print-button" id="print" aria-label="打印完整的四张记忆卡"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8V3h10v5M6 17H4V9h16v8h-2M7 14h10v7H7zM17 11h.1"/></svg><span>打印留存</span></button>
+      </div>
+    </header>
+    <a class="shelf-back" href="../../index.html">← 返回记忆书架</a>
+    <main id="main">
+      <section class="intro" aria-labelledby="page-title">
+        <div><h1 id="page-title">关键对话，<span>记住这四件事。</span></h1><p>先看中文速记，点开卡片看完整方法。把难说的话，好好说。</p></div>
+        <div class="route" aria-label="识别、准备、进行、结束"><b>识别</b><span>→</span><b>准备</b><span>→</span><b>进行</b><span>→</span><b>结束</b></div>
+      </section>
+      <noscript><style>.expanded-content{display:block;margin-top:25px}.cards{grid-template-columns:1fr}.open-card,.actions{display:none}</style><p class="no-js-note">完整要点已直接展开，向下阅读即可。</p></noscript>
+      <div class="cards">
+        <article class="memory-card card-one" id="card-1" aria-labelledby="title-1">
+          <div class="card-top"><div class="heading"><div class="step"><span class="step-number">01</span>先认出信号</div><h2 id="title-1">何为关键对话</h2><p class="tagline">重要的事，意见不一，情绪上头。</p></div><div class="art art-one" role="img" aria-label="两只小狗拿着不同的拼图片，象征观点不同"></div></div>
+          <div class="summary"><div class="formula"><b>高风险</b><span>＋</span><b>不同意见</b><span>＋</span><b>强烈情绪</b></div><p class="core">目标不是赢过对方，而是让双方的事实和想法进入<strong>共享观点库</strong>，一起做出更好的选择。</p><p class="small-quote">记住：事情很重要，我们要好好聊。</p></div>
+          <button class="open-card" data-open="1" aria-haspopup="dialog"><span>看懂信号与两个误区</span><span class="arrow" aria-hidden="true">↗</span></button>
+          <div class="expanded-content detail-content">
+            <p class="lead-note">把“我得让你认输”，换成“我们把事情看全”。</p>
+            <h3>三个条件同时出现，就要留意</h3>
+            <ul><li><strong>高风险：</strong>谈话结果会影响工作、关系或其他重要利益。</li><li><strong>不同意见：</strong>双方对发生了什么、为什么发生或该怎么办看法不同。</li><li><strong>强烈情绪：</strong>委屈、愤怒、害怕等情绪开始影响表达和倾听。</li></ul>
+            <h3>对话的核心：让信息自由流动</h3>
+            <p>每个人只掌握部分事实，也带着自己的解释。把不同看法放进<strong>共享观点库</strong>，更容易看清问题、改善决策，并形成真正愿意执行的承诺。</p>
+            <div class="path-flow"><b>我的信息</b><span>＋</span><b>你的信息</b><span>→</span><b>更完整的理解</b><span>→</span><b>更好的行动</b></div>
+            <h3>别掉进这两个陷阱</h3>
+            <div class="contrast"><div><b>沉默：把信息藏起来</b><p>掩饰、回避、退出。嘴上说“都行”，心里却不认同。</p></div><div><b>暴力：把观点塞过去</b><p>控制、贴标签、攻击。这里不只指动手，也包括语言上的强迫。</p></div></div>
+            <p>第三条路是<strong>既坦诚，又尊重</strong>。认真理解对方，不等于同意对方；尊重一个人，也不等于认同他的所有行为。</p>
+            <div class="closing-sentence"><small>自编示范 · 心里的提醒</small>“这件事对我们都很重要。现在有分歧，也有情绪——我需要的是理解和解决，不是压过对方。”</div>
+            <p class="hint">补充边界：如果存在现实的人身威胁、胁迫或虐待，优先离开危险、寻求支持，不必为了“对话”留在不安全的现场。</p>
+            <div class="source-links"><span>核对来源 · 本卡为中文转述</span><a href="https://cruciallearning.com/solutions/crucial-conversations-for-dialogue/" target="_blank" rel="noopener noreferrer">Crucial Learning：关键对话</a><a href="https://cruciallearning.com/blog/the-ultimate-guide-to-workplace-communication-crucial-learning/" target="_blank" rel="noopener noreferrer">共享观点、沉默与暴力</a></div>
+          </div>
+        </article>
+        <article class="memory-card card-two" id="card-2" aria-labelledby="title-2">
+          <div class="card-top"><div class="heading"><div class="step"><span class="step-number">02</span>先把自己理顺</div><h2 id="title-2">怎么准备</h2><p class="tagline">选话题，定目标，查想法。</p></div><div class="art art-two" role="img" aria-label="小狗用指南针和笔记本整理想法，准备对话"></div></div>
+          <div class="summary"><ul class="prep-list"><li><b>选话题</b><span>这次的事？反复的模式？关系？</span></li><li><b>定目标</b><span>我、对方、这段关系，各想要什么？</span></li><li><b>查想法</b><span>分开事实和脑补，找其他解释。</span></li></ul><p class="small-quote">记住：我想解决什么，而不是证明什么？</p></div>
+          <button class="open-card" data-open="2" aria-haspopup="dialog"><span>整理话题、目标与情绪</span><span class="arrow" aria-hidden="true">↗</span></button>
+          <div class="expanded-content detail-content">
+            <p class="lead-note">开口之前，先把话题选准、动机调正、故事看清。</p>
+            <h3>选话题：真正卡住我们的是什么？</h3>
+            <p>用 <strong>CPR</strong> 区分问题层次。它是选题工具，不是必须依次升级的三个步骤。</p>
+            <div class="detail-row"><span class="letter">C</span><div><h4>内容：这一次发生了什么？<span class="english">Content</span></h4><p>如：这次约好的材料没有按时交。</p></div></div>
+            <div class="detail-row"><span class="letter">P</span><div><h4>模式：同类问题是否反复发生？<span class="english">Pattern</span></h4><p>如：最近几次都延期了，事前也没有提醒。</p></div></div>
+            <div class="detail-row"><span class="letter">R</span><div><h4>关系：信任、尊重或角色发生了什么变化？<span class="english">Relationship</span></h4><p>如：我开始不敢依赖我们的约定。</p></div></div>
+            <p class="hint">把多个不满列出来，再选最需要解决的核心问题，用一句话说明。若现场出现新的、更紧迫的问题，要明确说明正在切换话题。</p>
+            <h3>从心开始：想要结果，不是想赢</h3>
+            <ul class="check-list"><li>我真正希望<strong>自己</strong>获得什么？</li><li>我真正希望<strong>对方</strong>获得什么？</li><li>我真正希望<strong>这段关系</strong>变成什么样？</li><li>如果我真的想要这些，现在应该怎样表现？</li></ul>
+            <p>拒绝“要么说真话伤关系，要么闭嘴保关系”的假两难。换成：<strong>怎样既把问题说清，又保留对彼此的尊重？</strong></p>
+            <h3>控制想法：事实与解释要分开</h3>
+            <div class="path-flow"><b>看见／听见</b><span>→</span><b>赋予解释</b><span>→</span><b>产生感受</b><span>→</span><b>采取行动</b></div>
+            <p>情绪上来时，倒着检查这条链：我做了什么？什么情绪在推动我？我给这件事编了什么解释？<strong>摄像机真正能录到的事实又是什么？</strong></p>
+            <div class="contrast"><div><b>事实</b><p>“我上午发了消息，到下午还没有回复。”</p></div><div><b>解释，不是已证实的事实</b><p>“他根本不尊重我，故意不理我。”</p></div></div>
+            <h4>警惕三种自我开脱的故事</h4>
+            <ul><li><strong>受害者故事：“我完全无辜。”</strong> → 我是否忽略了自己做过、或没做的事？</li><li><strong>坏人故事：“都是他的问题。”</strong> → 一个正常、理性的人为什么可能这样做？</li><li><strong>无助者故事：“我没别的办法。”</strong> → 为了真正想要的结果，我还可以做什么？</li></ul>
+            <p class="hint">寻找其他解释不是替错误开脱，而是暂缓定罪，留出了解事实和采取有效行动的空间。</p>
+            <div class="closing-sentence"><small>自编示范 · 开口前的三行笔记</small><strong>话题：</strong>几次延期后如何恢复可靠的配合。<br><strong>目标：</strong>我能安排进度，对方能说出真实困难。<br><strong>事实：</strong>最近三次交付中，有两次晚于约定时间。</div>
+            <div class="source-links"><span>核对来源 · 本卡为中文转述</span><a href="https://cruciallearning.com/blog/using-cpr-to-save-relationships/" target="_blank" rel="noopener noreferrer">CPR：选对话题</a><a href="https://cruciallearning.com/blog/crucial-conversations-skill-summary-start-with-heart/" target="_blank" rel="noopener noreferrer">从心开始</a><a href="https://cruciallearning.com/blog/crucial-conversations-skill-summary-master-my-stories/" target="_blank" rel="noopener noreferrer">控制想法与三种故事</a></div>
+          </div>
+        </article>
+        <article class="memory-card card-three" id="card-3" aria-labelledby="title-3">
+          <div class="card-top"><div class="heading"><div class="step"><span class="step-number">03</span>让对话继续流动</div><h2 id="title-3">怎么进行</h2><p class="tagline">先安心，再表达、倾听、接反馈。</p></div><div class="art art-three" role="img" aria-label="两只小狗面对面坐下，耐心表达和倾听"></div></div>
+          <div class="summary"><div class="tool-preview"><div><b>我说清楚<small>STATE</small></b><p>事实 → 想法 → 询问<br>语气试探，欢迎不同意见</p></div><div><b>我听明白<small>AMPP</small></b><p>询问、映照情绪<br>复述、试探引导</p></div><div><b>我再回应<small>ABC</small></b><p>赞同、补充、比较<br>选合适的回应，不急着反驳</p></div><div><b>我接得住<small>CURE</small></b><p>稳住、理解、恢复、回应<br>反馈不是对我整个人的判决</p></div></div><p class="safety-strip">随时留意：一旦沉默或攻击，先修复安全感。</p></div>
+          <button class="open-card" data-open="3" aria-haspopup="dialog"><span>看完整步骤与可直接用的话术</span><span class="arrow" aria-hidden="true">↗</span></button>
+          <div class="expanded-content detail-content">
+            <p class="lead-note">一边谈内容，一边看气氛。安全感不是开场白，而是全程都要照看的条件。</p>
+            <h3>先观察，再保证安全</h3>
+            <p>同时观察自己与对方：是否突然回避、敷衍、退缩，或开始打断、贴标签、攻击？一旦信息不再自由流动，<strong>先暂停争论内容，修复安全感，再回来谈问题。</strong></p>
+            <div class="contrast"><div><b>共同目的</b><p>“你在乎的目标，我也认真对待。”</p></div><div><b>相互尊重</b><p>“即使有分歧，我也尊重你这个人。”</p></div></div>
+            <ul><li><strong>自己确实做错了：</strong>真诚道歉，不拿道歉换对方闭嘴。</li><li><strong>对方误解了意图：</strong>用对比说明，澄清“我不是想……，我是希望……”。</li><li><strong>目标看似冲突：</strong>一起找共同目的，而不是继续争各自的方法。</li></ul>
+            <p class="say">自编示范：“我不是要否定你的努力。我想一起弄清楚，怎样让安排更可靠，也让你不用临时硬扛。”</p>
+            <h4>找共同目的：CRIB，也把中文记全</h4>
+            <div class="detail-row"><span class="letter">C</span><div><h4>承诺寻找共同目的<span class="english">Commit to seek Mutual Purpose</span></h4><p>先愿意一起找兼顾双方的结果，不急着赢下当前方案。</p></div></div>
+            <div class="detail-row"><span class="letter">R</span><div><h4>识别方法背后的真正目的<span class="english">Recognize the purpose behind the strategy</span></h4><p>“你坚持这样做，是想满足什么需要？”方法可能冲突，目的未必冲突。</p></div></div>
+            <div class="detail-row"><span class="letter">I</span><div><h4>创造双方都在乎的共同目的<span class="english">Invent a Mutual Purpose</span></h4><p>必要时把目标拉远、拉高，找更大的共同结果。</p></div></div>
+            <div class="detail-row"><span class="letter">B</span><div><h4>共同构思新的方法<span class="english">Brainstorm new strategies</span></h4><p>目的达成一致后，再想有哪些新办法能同时照顾双方。</p></div></div>
+            <h3>表达自己 · STATE</h3>
+            <p>中文速记：<strong>讲事实、说想法、问对方；语气留余地，主动请纠正。</strong></p>
+            <div class="detail-row"><span class="letter">S</span><div><h4>分享事实<span class="english">Share your facts</span></h4><p>从能观察、能核对的具体事实开始，少用“你总是”“你从不”。</p><p class="say">“最近三次交付，有两次晚于我们约定的时间。”</p></div></div>
+            <div class="detail-row"><span class="letter">T</span><div><h4>说出自己的解释与担忧<span class="english">Tell your story</span></h4><p>让对方知道你怎样理解这些事实，但别把解释包装成定论。</p><p class="say">“我开始担心，我们对交付承诺的理解是不是不一致。”</p></div></div>
+            <div class="detail-row"><span class="letter">A</span><div><h4>询问对方的看法<span class="english">Ask for others’ paths</span></h4><p>邀请对方补充事实、解释和感受，给对方真正说话的空间。</p><p class="say">“你是怎么看这两次延期的？中间发生了什么？”</p></div></div>
+            <div class="detail-row"><span class="letter">T</span><div><h4>用试探而非武断的语气表达<span class="english">Talk tentatively</span></h4><p>对事实清楚，对自己的解释保持谦逊；不是吞吞吐吐，也不是淡化问题。</p><p class="say">“也可能是我漏掉了信息，我目前的理解是……”</p></div></div>
+            <div class="detail-row"><span class="letter">E</span><div><h4>鼓励检验与不同意见<span class="english">Encourage testing</span></h4><p>明确欢迎纠正，别用反问逼对方同意。</p><p class="say">“如果你看到的和我不同，请直接告诉我。我们一起核对。”</p></div></div>
+            <p class="hint">前三项主要是“说什么”；后两项是贯穿表达的“怎么说”，不是等说完前三项才开始做。</p>
+            <h3>理解对方 · 先用 AMPP 倾听</h3>
+            <p>中文速记：<strong>问一问、照一照、复述一下、试探着引导。</strong></p>
+            <div class="detail-row"><span class="letter">A</span><div><h4>询问观点<span class="english">Ask</span></h4><p>用开放式问题邀请对方说出想法。</p><p class="say">“你最在意的是什么？我想听听你的看法。”</p></div></div>
+            <div class="detail-row"><span class="letter">M</span><div><h4>映照感受与表现<span class="english">Mirror</span></h4><p>如果语言与表情、语气不一致，温和说出观察，邀请确认；不要替对方断定情绪。</p><p class="say">“你说没事，不过刚才突然安静下来了。是不是还有些顾虑？”</p></div></div>
+            <div class="detail-row"><span class="letter">P</span><div><h4>用自己的话复述<span class="english">Paraphrase</span></h4><p>确认自己听懂了内容和在意的点，而非机械重复。</p><p class="say">“你担心的不是任务本身，而是时间一直在变，对吗？”</p></div></div>
+            <div class="detail-row"><span class="letter">P</span><div><h4>试探引导，帮助对方开口<span class="english">Prime</span></h4><p>对方仍难表达时，提出一个暂时的猜测，允许对方纠正。</p><p class="say">“我猜，你可能觉得拒绝我会让我失望？也可能不是这样。”</p></div></div>
+            <p class="hint">不要连续“发射问题”。每次邀请后都停下来听；理解不等于同意。</p>
+            <h3>理解之后 · 用 ABC 回应</h3>
+            <div class="detail-row"><span class="letter">A</span><div><h4>赞同共同之处<span class="english">Agree</span></h4><p>一致的地方就明确承认，不为小分歧抹掉大共识。</p><p class="say">“对，时间安排确实需要更清楚。”</p></div></div>
+            <div class="detail-row"><span class="letter">B</span><div><h4>补充缺少的信息<span class="english">Build</span></h4><p>基本赞同但信息不全时，在对方观点上补充。</p><p class="say">“在这一点上，我还想补充一个下游团队的情况。”</p></div></div>
+            <div class="detail-row"><span class="letter">C</span><div><h4>比较不同看法<span class="english">Compare</span></h4><p>确有不同就并列比较，回到事实，不急着判谁对谁错。</p><p class="say">“我看到的有一点不同。我们把各自的信息放在一起看看？”</p></div></div>
+            <p class="hint">ABC 是按情况选择的回应方式，不是每次必须机械走完三步。</p>
+            <h3>收到尖锐反馈 · CURE</h3>
+            <p>中文速记：<strong>稳住自己 → 听懂反馈 → 留时恢复 → 思考回应。</strong></p>
+            <div class="detail-row"><span class="letter">C</span><div><h4>稳住自己<span class="english">Collect yourself</span></h4><p>放慢呼吸，识别受伤、害怕或羞愧。提醒自己：做错一件事，不等于整个人没有价值。</p><p class="say">“我有点意外，给我一点时间缓一下。”</p></div></div>
+            <div class="detail-row"><span class="letter">U</span><div><h4>理解反馈的具体含义<span class="english">Understand</span></h4><p>先问事实和例子，不急着辩解，也不立刻全盘认错。</p><p class="say">“你说我不够配合，能讲一个具体场景吗？”</p></div></div>
+            <div class="detail-row"><span class="letter">R</span><div><h4>给自己恢复和思考的时间<span class="english">Recover</span></h4><p>需要时暂停，消化情绪后再评估；说明会回来回应。</p><p class="say">“我想认真考虑你说的。我们明天下午再谈，可以吗？”</p></div></div>
+            <div class="detail-row"><span class="letter">E</span><div><h4>评估反馈，重新参与对话<span class="english">Engage</span></h4><p>找出有用的事实，承认愿意改的部分；也清楚说出不同意的部分与理由。</p><p class="say">“提醒不及时这一点，我接受并会改。另一部分，我想补充当时的情况。”</p></div></div>
+            <p class="hint">能听取反馈，不代表必须接受羞辱。可以吸收有效信息，同时要求基本尊重、设定边界。</p>
+            <div class="remember-line">先保安全 → 我说清楚 → 我听明白 → 我稳住回应。<br>气氛一失控，就回到“安全”；不是硬把流程走完。</div>
+            <div class="source-links"><span>核对来源 · 步骤为中文转述，示范句为自编</span><a href="https://cruciallearning.com/blog/how-to-train-a-resistant-coworker/" target="_blank" rel="noopener noreferrer">共同目的 · CRIB</a><a href="https://cruciallearning.com/blog/what-to-say-when-people-break-boundaries/" target="_blank" rel="noopener noreferrer">表达 · STATE</a><a href="https://cruciallearning.com/blog/how-to-become-a-better-listener/" target="_blank" rel="noopener noreferrer">倾听 · AMPP</a><a href="https://cruciallearning.com/blog/the-abcs-of-reaching-agreement/" target="_blank" rel="noopener noreferrer">回应 · ABC</a><a href="https://cruciallearning.com/blog/how-to-respond-effectively-to-fierce-criticism/" target="_blank" rel="noopener noreferrer">反馈 · CURE</a></div>
+          </div>
+        </article>
+        <article class="memory-card card-four" id="card-4" aria-labelledby="title-4">
+          <div class="card-top"><div class="heading"><div class="step"><span class="step-number">04</span>把理解变成行动</div><h2 id="title-4">怎么结束</h2><p class="tagline">说清怎么决定，写下具体约定。</p></div><div class="art art-four" role="img" aria-label="两只小狗击掌，并把共同约定记在清单上"></div></div>
+          <div class="summary"><div class="action-grid"><div><b>谁来做</b><span>WHO</span></div><div><b>做什么</b><span>WHAT</span></div><div><b>何时好</b><span>WHEN</span></div><div><b>怎样跟进</b><span>FOLLOW-UP</span></div></div><p class="core">先选好<strong>命令、咨询、投票或共识</strong>的决策方式，再把行动落实到人、标准、时间和检查点。</p><p class="small-quote">记住：“谈好了”不等于“会做好”。</p></div>
+          <button class="open-card" data-open="4" aria-haspopup="dialog"><span>带走一份可执行的约定</span><span class="arrow" aria-hidden="true">↗</span></button>
+          <div class="expanded-content detail-content">
+            <p class="lead-note">好的结束，不是气氛终于缓和，而是双方知道接下来要做什么。</p>
+            <h3>先说明：这件事怎么做决定？</h3>
+            <p><strong>参与讨论，不自动等于拥有最终决定权。</strong>尽早说清采用哪种决策方式，别让一方以为在协商，另一方其实已经拍板。</p>
+            <div class="decision-list"><div><b>命令 · Command</b><p>由有权负责的人决定，不让所有人参与决策。</p></div><div><b>咨询 · Consult</b><p>先听取相关人的意见，再由明确的负责人决定。</p></div><div><b>投票 · Vote</b><p>按事先认可的投票规则选择方案。</p></div><div><b>共识 · Consensus</b><p>持续讨论，直到每个人都同意支持所选方案。</p></div></div>
+            <p class="hint">选择时考虑：谁关心结果、谁掌握信息、谁必须支持，以及需要多少人参与。不是所有事情都需要全体共识。</p>
+            <h3>把承诺写成四个可检查的答案</h3>
+            <div class="detail-row"><span class="letter">W</span><div><h4>谁来做<span class="english">Who</span></h4><p>明确责任人，避免只有“大家一起负责”。</p></div></div>
+            <div class="detail-row"><span class="letter">W</span><div><h4>做什么，做到什么程度<span class="english">What</span></h4><p>描述可观察的交付物与完成标准，而不是“积极一点”。</p></div></div>
+            <div class="detail-row"><span class="letter">W</span><div><h4>何时完成<span class="english">By When</span></h4><p>用具体时间代替“尽快”“有空就做”。</p></div></div>
+            <div class="detail-row"><span class="letter">F</span><div><h4>怎样跟进<span class="english">Follow-up</span></h4><p>约好何时、用什么方式检查结果；记录决定并确认双方理解一致。</p></div></div>
+            <h3>把“下次注意”换成一份约定</h3>
+            <div class="end-plan"><div><b>责任人</b><span>小林</span></div><div><b>交付物</b><span>更新后的项目排期，包含每项任务的责任人与日期</span></div><div><b>截止时间</b><span>本周五 18:00 前</span></div><div><b>跟进方式</b><span>下周一 10:00，一起用 15 分钟核对；若有延期风险，提前告知并重新协商</span></div></div>
+            <div class="closing-sentence"><small>自编示范 · 对话结束前最后一句</small>“我确认一下：你周五六点前发新版排期，我们周一十点一起核对；有风险就提前说。我理解得对吗？你还有什么顾虑？”</div>
+            <h3>如果现在还谈不完</h3>
+            <p>说清已达成的共识、尚未解决的问题，以及<strong>下次何时继续</strong>。必要的暂停是为了恢复对话，不是无限期冷处理。</p>
+            <p class="remember-line">实用复盘：我有没有回到共同目标？哪一刻失去了安全？下次只挑一个动作练习。</p>
+            <div class="source-links"><span>核对来源 · 本卡为中文转述，约定模板为自编</span><a href="https://cruciallearning.com/blog/what-to-do-when-coworkers-monopolize-your-meetings/" target="_blank" rel="noopener noreferrer">明确决策方式</a><a href="https://cruciallearning.com/glossary/" target="_blank" rel="noopener noreferrer">官方术语表：行动约定</a><a href="https://cruciallearning.com/blog/creating-a-culture-of-accountability/" target="_blank" rel="noopener noreferrer">明确承诺与跟进</a></div>
+          </div>
+        </article>
+      </div>
+    </main>
+    <footer class="footnote"><p>依照《关键对话》原书第 3 版的“基础概念＋如何准备／展开／结束对话”整理。<br>中文表述与口诀为助记转述，示范句为自编；非逐字章末摘录。每张卡内附核对来源。插画为原创小狗角色。</p><span class="remember">识别信号 → 理顺自己 → 好好对话 → 落实行动</span></footer>
+  </div>
+  <dialog id="memory-dialog" class="dialog" aria-labelledby="dialog-title">
+    <div class="dialog-head"><span class="step"><span class="step-number" id="dialog-number"></span></span><h2 id="dialog-title"></h2><button class="close-dialog" aria-label="关闭记忆卡"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg></button></div>
+    <div class="dialog-body"><div class="dialog-memory"><div class="art" id="dialog-art" aria-hidden="true"></div><p id="dialog-cue"></p></div><div class="detail-content" id="dialog-content"></div><div class="dialog-footer"><span>不用背缩写，先记住中文动作。</span><button class="plain-button close-bottom">记住了，回到四张卡 <span aria-hidden="true">↗</span></button></div></div>
+  </dialog>
+  <script>
+    (() => {
+      const dialog = document.getElementById('memory-dialog');
+      const cue = [
+        ['重要、分歧、情绪。','先认出这是一场值得好好聊的对话。'],
+        ['选话题，定目标，查想法。','先准备好自己，再邀请对方。'],
+        ['先安心，再好好说与听。','安全 → 表达 → 理解 → 接反馈。'],
+        ['谁、做什么、何时、怎样跟进。','让共同理解长出下一步行动。']
+      ];
+      let opener = null;
+      const close = () => dialog.close();
+      document.querySelectorAll('[data-open]').forEach(button => {
+        button.addEventListener('click', () => {
+          const n = Number(button.dataset.open);
+          const card = document.getElementById('card-' + n);
+          opener = button;
+          dialog.className = 'dialog ' + ['card-one','card-two','card-three','card-four'][n-1];
+          document.getElementById('dialog-title').textContent = card.querySelector('h2').textContent;
+          document.getElementById('dialog-number').textContent = String(n).padStart(2, '0');
+          document.getElementById('dialog-art').className = 'art ' + ['art-one','art-two','art-three','art-four'][n-1];
+          const text = document.getElementById('dialog-cue');
+          text.replaceChildren(document.createTextNode(cue[n-1][0]));
+          const sub = document.createElement('small');
+          sub.textContent = cue[n-1][1];
+          text.append(sub);
+          document.getElementById('dialog-content').replaceChildren(...Array.from(card.querySelector('.expanded-content').children, element => element.cloneNode(true)));
+          dialog.showModal();
+          document.body.classList.add('modal-open');
+          dialog.scrollTop = 0;
+          dialog.querySelector('.close-dialog').focus({preventScroll:true});
+        });
+      });
+      dialog.querySelector('.close-dialog').addEventListener('click', close);
+      dialog.querySelector('.close-bottom').addEventListener('click', close);
+      dialog.addEventListener('click', event => { if(event.target === dialog){ const r=dialog.getBoundingClientRect(); if(event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) close(); } });
+      dialog.addEventListener('close', () => { document.body.classList.remove('modal-open'); if(opener) opener.focus({preventScroll:true}); });
+      const toggle = document.getElementById('view-toggle');
+      toggle.addEventListener('click', () => {
+        const expanded = document.body.classList.toggle('full-view');
+        toggle.setAttribute('aria-pressed', String(expanded));
+        toggle.querySelector('span').textContent = expanded ? '返回四卡总览' : '展开四张卡';
+      });
+      document.getElementById('print').addEventListener('click', () => window.print());
+    })();
+  </script>
+</body>
+</html>
