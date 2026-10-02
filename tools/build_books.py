@@ -1,0 +1,164 @@
+#!/usr/bin/env python3
+"""Optional maintainer tool. Pages themselves need no build or dependencies."""
+from pathlib import Path
+import html, json
+
+ROOT = Path(__file__).resolve().parents[1]
+ORDER = ['most-important-thing','beating-the-street','just-keep-buying','poor-charlies-almanack','ai-prehistory','buffett-shareholder-letters','nature-of-technology','skin-in-the-game','clear-thinking','cognitive-awakening','chaos-kings','safe-haven','complexity','sync','emergence','notes-on-complexity','same-as-ever','way-of-the-turtle','sovereign-individual']
+E = lambda value: html.escape(str(value), quote=True)
+THEMES = {'财富与投资':('#47604a','#eaf0df'),'投资与风险':('#42647a','#e7eff5'),'思考与成长':('#92562f','#fbebda'),'复杂科学':('#526883','#e8edf8'),'技术与未来':('#656089','#eee9f8')}
+def theme(b):
+    if b['slug'] in ['clear-thinking','cognitive-awakening','same-as-ever','poor-charlies-almanack']: return THEMES['思考与成长']
+    if b['slug'] in ['ai-prehistory','nature-of-technology','sovereign-individual']: return THEMES['技术与未来']
+    if b['category']=='复杂科学': return THEMES['复杂科学']
+    if b['slug'] in ['skin-in-the-game','chaos-kings','safe-haven','way-of-the-turtle']: return THEMES['投资与风险']
+    return THEMES['财富与投资']
+def category(b):
+    t=theme(b)
+    return next(k for k,v in THEMES.items() if v==t)
+def art(b, i=0, prefix='', cls='scene', label=''):
+    a=b['art']; cw=a['width']/a['columns']; ch=a['height']/a['rows']; x=(i%a['columns'])*cw; y=(i//a['columns'])*ch
+    return f'<svg class="{cls}" viewBox="{x+5:g} {y+5:g} {cw-10:g} {ch-10:g}" role="img" aria-label="{E(label or b["world"])}" focusable="false"><image href="{prefix}storyboard.webp" width="{a["width"]}" height="{a["height"]}" /></svg>'
+
+CSS = r'''
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:24px}body{margin:0;background:#f7f5ee;color:#273b3e;font:16px/1.8 "PingFang SC","Microsoft YaHei",system-ui,sans-serif;-webkit-font-smoothing:antialiased}a{color:inherit;text-underline-offset:4px}button,input{font:inherit}button,a,summary,input{-webkit-tap-highlight-color:transparent}button,summary{touch-action:manipulation}a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid #bd6b2f;outline-offset:5px}h1,h2,h3,p{margin:0}button{cursor:pointer}a,button,summary{overflow-wrap:anywhere}[hidden]{display:none!important}.wrap{width:min(1120px,calc(100% - 56px));margin:auto}.topbar{min-height:82px;display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:1px solid #dce0d6}.brand{text-decoration:none;font-weight:750;display:flex;align-items:center;gap:10px}.mark{width:34px;height:36px;display:grid;place-items:center;background:#35534e;color:#fff1bc;border-radius:8px 12px 12px 8px;transform:rotate(-7deg);font-size:21px}.eyebrow{font-size:12px;letter-spacing:2px;font-weight:750;color:var(--accent,#47604a)}.muted{color:#667572}.topmeta{font-size:13px}.hero{display:grid;grid-template-columns:1.3fr 1fr;align-items:center;gap:56px;padding:56px 0 44px}.hero h1{font-size:clamp(34px,4.1vw,52px);line-height:1.3;letter-spacing:-1.5px;margin:13px 0 18px}.hero .thesis{font-size:20px;line-height:1.7;color:var(--accent,#47604a);font-weight:650;max-width:620px}.byline{font-size:14px;margin-top:20px;color:#687471}.hero-illustration{background:var(--wash,#eaf0df);padding:16px;border:1px solid #d8dfd0;border-radius:30px;transform:rotate(2deg);box-shadow:8px 9px 0 #e5e7dc}.hero-illustration .scene{width:100%;aspect-ratio:1;display:block;border-radius:20px}.hero-illustration figcaption{font-size:12px;text-align:center;margin-top:10px;color:var(--accent);letter-spacing:1px}.hero-illustration{margin:0}.guide{display:flex;gap:22px;padding:22px 26px;background:var(--wash);border-radius:19px;margin:0 0 24px;align-items:center}.guide b{white-space:nowrap;color:var(--accent)}.guide p{font-size:14px;color:#556660}.route{display:flex;gap:9px;flex-wrap:wrap;margin:22px 0 30px}.route a{font-size:13px;text-decoration:none;border:1px solid #d6dccc;padding:9px 13px;border-radius:12px;background:#fcfcf7;min-height:44px;display:flex;align-items:center;gap:8px}.route a:hover{background:var(--wash)}.route em{font-size:12px;font-style:normal;color:var(--accent);font-weight:750}.section-head{display:flex;align-items:center;justify-content:space-between;gap:20px;margin:34px 0 18px}.section-head h2{font-size:22px}.tools{display:flex;gap:8px;flex-wrap:wrap}.tools button{background:#fffdf8;border:1px solid #cfd8ce;border-radius:10px;min-height:44px;padding:8px 14px;font-size:13px;color:#435d55}.card-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;align-items:start}.memory-card{min-width:0;background:#fffef9;border:1px solid #d9dece;border-radius:24px;box-shadow:0 4px 0 #233d3610;overflow:hidden;scroll-margin-top:24px}.memory-card>summary{list-style:none;cursor:pointer;padding:22px;display:block}.memory-card>summary::-webkit-details-marker,.answer>summary::-webkit-details-marker{display:none}.card-top{display:flex;align-items:start;gap:12px;justify-content:space-between;font-size:12px;margin-bottom:16px;color:#6c7770}.card-number{font-size:12px;letter-spacing:1px;font-weight:800;color:var(--accent);white-space:nowrap}.chapter{text-align:right;max-width:78%}.card-preview{display:grid;grid-template-columns:150px minmax(0,1fr);gap:20px;align-items:center}.card-preview .scene{width:100%;height:auto;aspect-ratio:1;border-radius:16px;display:block;background:var(--wash);overflow:hidden}.memory-card h2{font-size:22px;line-height:1.5;letter-spacing:-.5px;margin-bottom:11px}.card-thesis{font-size:15px;line-height:1.7;color:#5a6d63}.open-hint{display:flex;align-items:center;justify-content:space-between;font-size:13px;font-weight:650;color:var(--accent);border-top:1px dashed #dce0d2;margin-top:18px;padding-top:13px;min-height:42px}.plus{font-size:24px;line-height:1;width:28px;text-align:center}.minus,.memory-card[open] .plus,.memory-card[open] .when-closed{display:none}.memory-card[open] .minus{display:inline}.when-open{display:none}.memory-card[open] .when-open{display:inline}.memory-card[open]>summary{background:var(--wash)}.card-body{padding:23px 25px 26px;border-top:1px solid #d9dece}.cue{font-size:13px;color:var(--accent);padding-bottom:18px}.body-label{font-size:12px;letter-spacing:1px;color:#7a7866;margin:5px 0 10px;font-weight:750}.points{padding-left:20px;margin:0 0 21px}.points li{margin:8px 0;padding-left:3px}.example{border-left:3px solid #c4ac77;padding:1px 0 1px 16px;margin:22px 0;font-size:15px;color:#5c675e}.example b{display:block;color:#7d6e4d;font-size:12px;margin-bottom:7px;letter-spacing:1px}.recall{background:#f1f4ea;border-radius:15px;padding:18px 19px;margin:22px 0}.recall h3{font-size:13px;color:#637852;margin-bottom:7px}.recall>p{font-weight:650;font-size:16px}.answer{margin-top:9px}.answer>summary{cursor:pointer;min-height:44px;display:flex;align-items:center;color:#4e694c;font-size:13px;text-decoration:underline;text-underline-offset:4px;list-style:none}.answer>p{padding:8px 0 4px;font-size:15px;color:#52614d}.action{font-size:14px}.action b{display:block;font-size:12px;letter-spacing:1px;color:var(--accent);margin-bottom:7px}.mastered{margin-top:24px;border-top:1px dashed #d7ddce;padding-top:16px;display:flex;align-items:center;gap:10px;font-size:14px;color:#5d7355;min-height:44px;cursor:pointer}.mastered input{width:20px;height:20px;accent-color:var(--accent);flex-shrink:0}.review-status{font-size:13px;color:#667572;margin-top:13px}.sources{margin:38px 0 0;padding:26px 28px;background:#edece3;border-radius:20px;font-size:14px;color:#626d62}.sources h2{font-size:18px;color:#3e554d;margin-bottom:12px}.sources p+p{margin-top:12px}.source-links{display:flex;flex-wrap:wrap;gap:8px 22px;margin:15px 0}.source-links a{min-height:40px;display:flex;align-items:center}.footer{display:flex;justify-content:space-between;gap:20px;border-top:1px solid #d9decf;margin-top:38px;padding:22px 0 35px;font-size:13px;color:#647368}.footer a{min-height:44px;display:inline-flex;align-items:center}.footer p{padding-top:10px}.book-ended{font-size:16px;font-weight:600;color:var(--accent);margin-top:30px;text-align:center}.jump{display:inline-flex;align-items:center;min-height:44px;margin-top:15px;font-size:13px}.shelf-hero{padding:58px 0 40px;position:relative}.shelf-hero h1{font-size:clamp(34px,4.8vw,56px);line-height:1.35;letter-spacing:-1.8px;margin:15px 0}.shelf-hero h1 span{color:#5b8071}.shelf-hero p{color:#64756b;max-width:650px}.shelf-stats{display:flex;gap:22px;margin:25px 0 0;font-size:13px;color:#637669}.shelf-stats b{font-size:24px;color:#355a4a;display:block;line-height:1.3}.filters{background:#fffdf7;border:1px solid #d9dece;border-radius:20px;padding:20px;margin-bottom:28px}.search-label{font-size:12px;color:#697664;font-weight:650;display:block;margin-bottom:6px}.search{width:100%;min-height:48px;border:1px solid #cdd7c8;border-radius:11px;background:#f9faf4;color:#2c4234;padding:10px 14px}.filter-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.filter-row button{padding:8px 13px;border:1px solid #d9dfd1;border-radius:11px;min-height:44px;background:#fffdf7;color:#5c6c5a;font-size:13px}.filter-row button[aria-pressed="true"]{background:#35594a;color:#fff9e7;border-color:#35594a}.results{font-size:13px;color:#6b786b;margin:12px 2px 0}.shelf-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:23px}.shelf-book{min-width:0;background:#fffef9;border:1px solid #d9dece;border-radius:23px;overflow:hidden;box-shadow:0 4px 0 #233d3610;display:flex;flex-direction:column}.cover{padding:16px 16px 0;background:var(--wash);position:relative}.cover .scene{height:205px;width:100%;display:block;border-radius:13px;background:var(--wash)}.cover-count{display:inline-block;position:absolute;right:25px;bottom:10px;background:#fffef5ee;color:#445b49;border-radius:8px;padding:3px 9px;font-size:12px;box-shadow:0 1px 6px #0001}.shelf-copy{padding:22px 24px 25px;display:flex;flex-direction:column;flex:1}.shelf-copy .eyebrow{font-size:11px;letter-spacing:1px}.shelf-book h2{font-size:24px;line-height:1.4;margin:9px 0}.shelf-author{font-size:12px;color:#7e8378;margin-bottom:12px}.shelf-desc{font-size:14px;color:#607365;margin-bottom:20px;flex:1}.read{display:flex;align-items:center;justify-content:space-between;text-decoration:none;font-size:14px;font-weight:700;color:var(--accent);border-top:1px solid #e2e6d9;min-height:46px;padding-top:13px}.read:hover{text-decoration:underline}.empty{padding:45px 20px;border:1px dashed #c1cebc;text-align:center;border-radius:18px;color:#66775f}.legacy{width:100%;height:205px;border-radius:13px;background-size:200% 200%;background-repeat:no-repeat;background-position:0 100%}
+@media(min-width:1000px){.card-preview{grid-template-columns:185px minmax(0,1fr)}}
+@media(max-width:900px){.shelf-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{gap:28px}.hero h1{font-size:36px}.card-preview{grid-template-columns:1fr}.card-preview .scene{width:180px;justify-self:center}.card-thesis{min-height:3.4em}.memory-card h2{font-size:23px}}
+@media(max-width:620px){.wrap{width:calc(100% - 32px)}.topbar{min-height:70px;gap:12px}.topmeta{font-size:11px;max-width:44%;text-align:right}.brand{font-size:14px}.hero{grid-template-columns:1fr;gap:26px;padding:34px 0 30px}.hero h1{font-size:35px;letter-spacing:-1px}.hero .thesis{font-size:18px}.hero-illustration{width:210px;justify-self:center;padding:10px;border-radius:21px;box-shadow:5px 6px 0 #e5e7dc}.hero-illustration .scene{border-radius:14px}.hero-illustration figcaption{font-size:11px;letter-spacing:0}.byline{font-size:12px}.guide{padding:18px 19px;display:block}.guide b{display:block;margin-bottom:6px}.guide p{font-size:13px}.route{gap:7px;margin:20px 0}.route a{padding:7px 10px;font-size:12px}.section-head{align-items:flex-start;flex-direction:column;gap:12px;margin-top:28px}.section-head h2{font-size:21px}.card-grid,.shelf-grid{grid-template-columns:1fr;gap:20px}.card-preview{grid-template-columns:120px minmax(0,1fr);gap:14px}.card-preview .scene{width:120px}.memory-card>summary{padding:18px}.memory-card h2{font-size:21px;line-height:1.45;margin-bottom:9px}.card-thesis{font-size:14px;min-height:0}.card-body{padding:22px 20px}.chapter{font-size:11px}.card-top{gap:8px}.sources{padding:22px 20px}.footer{display:block;font-size:12px}.footer p{margin-bottom:9px}.shelf-hero{padding:34px 0 26px}.shelf-hero h1{font-size:36px;letter-spacing:-1px}.shelf-stats{gap:25px}.filters{padding:16px}.shelf-book{display:grid;grid-template-columns:112px minmax(0,1fr);border-radius:19px}.cover{padding:12px 0 12px 12px;background:transparent;align-self:start}.cover .scene,.legacy{height:110px;width:100%;border-radius:11px}.cover-count{position:static;margin-top:8px;font-size:11px;padding:0;background:transparent;box-shadow:none}.shelf-copy{padding:17px 17px 16px 15px}.shelf-book h2{font-size:21px;margin:6px 0}.shelf-desc{font-size:13px;margin-bottom:8px}.shelf-author{font-size:11px;margin-bottom:8px}.shelf-copy .eyebrow{font-size:10px}.read{font-size:13px;min-height:44px;padding-top:7px}.shelf-stats b{font-size:22px}}
+@media(max-width:355px){.card-preview{grid-template-columns:94px minmax(0,1fr);gap:12px}.card-preview .scene{width:94px}.memory-card h2{font-size:19px}.card-thesis{font-size:13px}.shelf-book{grid-template-columns:92px minmax(0,1fr)}.cover .scene,.legacy{height:90px}.shelf-copy{padding-left:12px}.shelf-book h2{font-size:19px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+@media print{body{background:white;font-size:12pt}.wrap{width:100%}.topbar,.route,.tools,.mastered,.footer,.jump,.open-hint,.hero-illustration{display:none!important}.hero{display:block;padding:10px 0}.hero h1{font-size:28pt}.card-grid{display:block}.memory-card{margin:12px 0;break-inside:avoid;box-shadow:none}.card-preview{grid-template-columns:100px 1fr}.card-preview .scene{width:100px}.card-body{display:block!important}.sources{background:white;border:1px solid #bbb}.card-body,.memory-card>summary{padding:15px}.guide{margin:10px 0}}
+'''
+
+BOOK_JS = r'''
+(() => {
+  const cards=[...document.querySelectorAll('.memory-card')];
+  document.querySelectorAll('[data-js]').forEach(el=>el.hidden=false);
+  document.getElementById('expand').addEventListener('click',()=>cards.forEach(c=>c.open=true));
+  document.getElementById('collapse').addEventListener('click',()=>{cards.forEach(c=>c.open=false);document.querySelectorAll('.answer').forEach(a=>a.open=false)});
+  const storageKey='book-memory:v1:'+document.body.dataset.book;
+  let saved=[]; try{saved=JSON.parse(localStorage.getItem(storageKey)||'[]');if(!Array.isArray(saved))saved=[]}catch(e){}
+  const boxes=[...document.querySelectorAll('[data-mastered]')];
+  boxes.forEach(box=>box.checked=saved.includes(box.value));
+  const status=()=>document.getElementById('review-status').textContent='本轮已回想 '+boxes.filter(x=>x.checked).length+' / '+boxes.length+' 张 · 记录仅保存在当前浏览器';
+  boxes.forEach(box=>box.addEventListener('change',()=>{try{localStorage.setItem(storageKey,JSON.stringify(boxes.filter(x=>x.checked).map(x=>x.value)))}catch(e){}status()}));status();
+  document.getElementById('reset').addEventListener('click',()=>{boxes.forEach(x=>x.checked=false);try{localStorage.removeItem(storageKey)}catch(e){}status()});
+  let printState=[];
+  window.addEventListener('beforeprint',()=>{printState=[...document.querySelectorAll('details')].map(d=>[d,d.open]);printState.forEach(([d])=>d.open=true)});
+  window.addEventListener('afterprint',()=>printState.forEach(([d,open])=>d.open=open));
+  document.getElementById('print').addEventListener('click',()=>window.print());
+  const showHash=()=>{const el=document.getElementById(decodeURIComponent(location.hash.slice(1)));if(el?.classList.contains('memory-card'))el.open=true};
+  window.addEventListener('hashchange',showHash);showHash();
+})();
+'''
+
+def head(title, description, accent='#47604a', wash='#eaf0df'):
+    return f'<!DOCTYPE html>\n<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="{E(description)}"><meta name="theme-color" content="#f7f5ee"><title>{E(title)} · 记忆书架</title><style>:root{{--accent:{accent};--wash:{wash}}}{CSS}</style></head>'
+
+def render_card(b,c,i):
+    n=i+1
+    return f'''<details class="memory-card" id="card-{n}"><summary>
+    <div class="card-top"><span class="card-number">CARD {n:02}</span><span class="chapter">{E(c['chapters'])}</span></div>
+    <div class="card-preview">{art(b,i,label=c['cue'])}<div><h2>{E(c['title'])}</h2><p class="card-thesis">{E(c['thesis'])}</p></div></div>
+    <div class="open-hint"><span class="when-closed">点开卡片 · 理解与回想</span><span class="when-open">收起卡片</span><span class="plus" aria-hidden="true">＋</span><span class="minus" aria-hidden="true">−</span></div></summary>
+    <div class="card-body"><p class="cue">画面线索 · {E(c['cue'])}</p><h3 class="body-label">记住这几件事</h3><ul class="points">{''.join('<li>'+E(p)+'</li>' for p in c['points'])}</ul>
+    <div class="example"><b>换个场景理解 · 自编示例</b><p>{E(c['example'])}</p></div>
+    <section class="recall" aria-label="主动回忆"><h3>先回想，再看答案</h3><p>{E(c['question'])}</p><details class="answer"><summary>查看参考回答</summary><p>{E(c['answer'])}</p></details></section>
+    <p class="action"><b>下次可以这样做</b>{E(c['action'])}</p><label class="mastered" data-js hidden><input type="checkbox" data-mastered value="card-{n}">我能用自己的话说明白了</label></div></details>'''
+
+def build_book(b):
+    path=ROOT/'books'/b['slug']; accent,wash=theme(b); n=len(b['cards'])
+    links=''.join(f'<a href="{E(s["url"])}" target="_blank" rel="noopener noreferrer">{E(s["label"])} ↗</a>' for s in b['sources'])
+    out=head(b['title'],b['thesis'],accent,wash)+f'''<body data-book="{b['slug']}"><div class="wrap" id="top">
+    <header class="topbar"><a class="brand" href="../../index.html"><span class="mark" aria-hidden="true">B</span>← 记忆书架</a><span class="topmeta muted">{E(category(b))} · {n} 张主题卡</span></header>
+    <main><section class="hero"><div><p class="eyebrow">A BOOK TO REMEMBER</p><h1>{E(b['title'])}</h1><p class="thesis">{E(b['thesis'])}</p><p class="byline">{E(b['author'])}<br>{E(b['edition'])}</p></div><figure class="hero-illustration">{art(b)}<figcaption>{E(b['world'])}</figcaption></figure></section>
+    <div class="guide"><b>把书里的道理带回生活</b><p>{E(b['use'])}<br>先看图回想 → 点开补充 → 回答问题 → 留下一个行动。</p></div>
+    <nav class="route" aria-label="主题路线">{''.join(f'<a href="#card-{i+1}"><em>{i+1:02}</em>{E(c["title"])}</a>' for i,c in enumerate(b['cards']))}</nav>
+    <section aria-labelledby="cards-title"><div class="section-head"><div><h2 id="cards-title">{n} 张卡，串起全书主线</h2><p class="review-status" id="review-status" data-js hidden aria-live="polite"></p></div><div class="tools" data-js hidden><button id="expand" type="button">全部展开</button><button id="collapse" type="button">全部收起</button><button id="reset" type="button">重新复习</button><button id="print" type="button">打印卡片</button></div></div>
+    <div class="card-grid">{''.join(render_card(b,c,i) for i,c in enumerate(b['cards']))}</div></section>
+    <p class="book-ended">记住一个判断，下次用出来。</p>
+    <section class="sources" aria-labelledby="sources-title"><h2 id="sources-title">版本与整理说明</h2><p>{E(b['edition'])}。原书名：{E(b['original'])}。</p><p>卡片按相关主题重新组织，章节标签用于回到原书查找，部分章节会跨卡出现。内容为助记转述；场景、角色、例子与回忆题均为原创辅助，不是原文摘录或书中案例。</p>{'<p>'+E(b['note'])+'</p>' if b['note'] else ''}<div class="source-links">{links}</div><p>插画是视觉比喻，不作为精确图解。资料与目录核对日期：2026-10-02。</p></section>
+    <a class="jump" href="#top">↑ 回到本书开头</a></main><footer class="footer"><p>一次阅读留下线索，一次回想加深记忆。</p><a href="../../index.html">继续逛书架 →</a></footer></div><script>{BOOK_JS}</script></body></html>'''
+    (path/'index.html').write_text(out,encoding='utf-8')
+    mapping='\n'.join(f'| {i+1} | {c["title"]} | {c["chapters"]} |' for i,c in enumerate(b['cards']))
+    sources='\n'.join(f'- [{s["label"]}]({s["url"]})' for s in b['sources'])
+    readme=f'''# 《{b['title']}》记忆卡片
+
+- 作者：{b['author']}
+- 原书：{b['original']}
+- 采用版本：{b['edition']}
+- 整理：{n} 张主题卡；原书主张的助记转述，不替代原书。
+- 角色与场景：{b['world']}。
+
+{b['note']}
+
+## 主题与章节
+
+| 卡片 | 主题 | 对应位置 |
+| --- | --- | --- |
+{mapping}
+
+各章可能跨主题出现。所有场景、例子、提问、参考回答和应用提示均为自行编写，未复制原书正文；作者观点、模型与推测按页面提示理解。
+
+## 来源
+
+{sources}
+
+核对日期：2026-10-02。目录用于核对版本和定位；卡片为基于原书公开介绍及相关研究说明的原创概括，未逐页校对用户纸书。
+
+## 素材与维护
+
+- `index.html`：完整静态网页，手机端使用原生 `details/summary` 展开；不依赖脚本、弹窗或外部字体。
+- `content.json`：结构化卡片内容与图片网格尺寸。
+- `storyboard.webp`：本书专用原创助记分镜；由内置 ImageGen 生成，保留原尺寸与构图并转换为适合网页加载的 WebP。
+- `illustration.json`：完整生成提示、网格位置与尺寸记录；未使用第三方书封。
+- `../../tools/build_books.py`：可选的维护工具，读取内容重新生成网页；读者无需运行。
+
+复习勾选仅使用当前浏览器 localStorage；没有网络请求、统计、账号或数据库。无法保存时不影响阅读。基本卡片和回忆题在禁用 JavaScript 时仍可展开。
+'''
+    (path/'README.md').write_text(readme,encoding='utf-8')
+
+SHELF_JS = r'''
+(()=>{document.querySelector('[data-js]').hidden=false;
+const search=document.getElementById('search');const buttons=[...document.querySelectorAll('[data-filter]')];const books=[...document.querySelectorAll('.shelf-book')];let category='全部';
+function filter(){const words=search.value.trim().toLocaleLowerCase().split(/\s+/).filter(Boolean);let count=0;books.forEach(b=>{const match=(category==='全部'||b.dataset.category===category)&&words.every(w=>b.dataset.search.includes(w));b.hidden=!match;if(match)count++});document.getElementById('results').textContent='找到 '+count+' 本书';document.getElementById('empty').hidden=count!==0}
+search.addEventListener('input',filter);buttons.forEach(b=>b.addEventListener('click',()=>{category=b.dataset.filter;buttons.forEach(x=>x.setAttribute('aria-pressed',String(x===b)));filter()}));filter();})();
+'''
+
+def build_shelf(books):
+    legacy=[dict(slug='crucial-conversations',title='关键对话',author='科里·帕特森等',category='沟通与关系',count=4,desc='用四张卡串起一场重要对话，把难说的话好好说。',file='dogs-storyboard.png'),dict(slug='psychology-of-money',title='金钱心理学',author='摩根·豪泽尔',category='财富与投资',count=4,desc='按第1–5、6–10、11–15、16–22章，回想财富与行为的关系。',file='money-storyboard.png')]
+    items=[]
+    for b in books:
+        a,w=theme(b);cat=category(b);search=' '.join([b['title'],b['author'],b['original'],cat,b['thesis']]+[c['title'] for c in b['cards']]).lower()
+        items.append(f'''<article class="shelf-book" style="--accent:{a};--wash:{w}" data-category="{E(cat)}" data-search="{E(search)}"><div class="cover">{art(b,prefix='books/'+b['slug']+'/')}<span class="cover-count">{len(b['cards'])} 张主题卡</span></div><div class="shelf-copy"><p class="eyebrow">{E(cat)}</p><h2>{E(b['title'])}</h2><p class="shelf-author">{E(b['author'])}</p><p class="shelf-desc">{E(b['thesis'])}</p><a class="read" href="books/{b['slug']}/index.html" aria-label="打开《{E(b['title'])}》记忆卡">打开记忆卡 <span aria-hidden="true">↗</span></a></div></article>''')
+    old=[]
+    for b in legacy:
+        old.append(f'''<article class="shelf-book" data-category="{b['category']}" data-search="{E(b['title']+' '+b['author']+' '+b['category'])}"><div class="cover"><div class="legacy" style="background-image:url('books/{b['slug']}/{b['file']}')" role="img" aria-label="卡通小狗的助记场景"></div><span class="cover-count">4 张记忆卡</span></div><div class="shelf-copy"><p class="eyebrow">{b['category']}</p><h2>{b['title']}</h2><p class="shelf-author">{b['author']}</p><p class="shelf-desc">{b['desc']}</p><a class="read" href="books/{b['slug']}/index.html" aria-label="打开《{b['title']}》记忆卡">打开记忆卡 <span aria-hidden="true">↗</span></a></div></article>''')
+    filters=''.join(f'<button type="button" data-filter="{x}" aria-pressed="{str(x=="全部").lower()}">{x}</button>' for x in ['全部',*THEMES.keys(),'沟通与关系'])
+    total=sum(len(b['cards']) for b in books)+8
+    out=head('记忆书架','用主题卡片、原创场景与主动回忆，把读过的书变成能用的知识。')+f'''<body><div class="wrap"><header class="topbar"><a class="brand" href="index.html"><span class="mark" aria-hidden="true">B</span>记忆书架</a><a class="topmeta muted" href="https://github.com/reetyo/book-memory-pages">GitHub ↗</a></header><main><section class="shelf-hero"><p class="eyebrow">READ · REMEMBER · USE</p><h1>读过的书，<br><span>变成随时能用的记忆。</span></h1><p>跟着狐狸看价值，陪海龟学纪律，和萤火虫寻找秩序。<br>一本书，一个小世界；看图回想，把道理带回生活。</p><div class="shelf-stats"><span><b>{len(books)+2:02}</b>本书</span><span><b>{total}</b>张记忆卡</span><span><b>06</b>个知识方向</span></div></section><section class="filters" aria-label="筛选书架" data-js hidden><label class="search-label" for="search">今天想回想什么？</label><input class="search" id="search" type="search" placeholder="搜索书名、作者或主题，例如：风险、习惯" autocomplete="off"><div class="filter-row" role="group" aria-label="按主题筛选">{filters}</div><p class="results" id="results" aria-live="polite"></p></section><div class="shelf-grid">{''.join(old+items)}</div><p class="empty" id="empty" hidden>没有找到匹配的书。试试更短的关键词，或选择「全部」。</p></main><footer class="footer"><p>先回想，再翻开。让阅读在下一次选择里留下痕迹。</p><a href="README.md">版本、来源与整理说明 ↗</a></footer></div><script>{SHELF_JS}</script></body></html>'''
+    (ROOT/'index.html').write_text(out,encoding='utf-8')
+    readme=(ROOT/'README.md').read_text(encoding='utf-8')
+    start=readme.index('## 书籍列表');end=readme.index('## 发布方式',start)
+    rows='\n'.join(f'| 《{b["title"]}》 | {b["edition"]} | {len(b["cards"])} 张主题卡 | [{b["slug"]}](books/{b["slug"]}/) |' for b in books)
+    table='''## 书籍列表
+
+| 书籍 | 版本 | 整理方式 | 文件夹 |
+| --- | --- | --- | --- |
+| 《关键对话》 | 原书第 3 版 | 四张记忆卡；完整中文话术拆解 | [crucial-conversations](books/crucial-conversations/) |
+| 《金钱心理学》 | 2026 全新增订版 · 22章 | 按第1–5、6–10、11–15、16–22章分为四卡 | [psychology-of-money](books/psychology-of-money/) |
+'''+rows+'''
+
+新增 19 本书共 107 张主题卡。每卡包含章节定位、原创场景、要点、自编例子、主动回忆题和行动提示。全部使用原生展开交互，兼容触屏、键盘和禁用 JavaScript 的浏览器。复习进度仅在本地保存。
+
+各书 `content.json` 为可编辑内容源；修改后可选运行 `python3 tools/build_books.py` 重新生成新版书架和这 19 本页面。现有两本页面不会被生成器改写。网页发布和阅读本身不需要 Python 或构建。
+
+'''
+    (ROOT/'README.md').write_text((readme[:start]+table+readme[end:]).rstrip()+'\n',encoding='utf-8')
+
+if __name__=='__main__':
+    books=[json.loads((ROOT/'books'/slug/'content.json').read_text(encoding='utf-8')) for slug in ORDER]
+    assert len(books)==19 and len({b['slug'] for b in books})==19
+    for b in books: build_book(b)
+    build_shelf(books)
+    print(f'Built {len(books)} books / {sum(len(b["cards"]) for b in books)} cards; bookshelf has {len(books)+2} books.')

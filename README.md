@@ -7,6 +7,8 @@
 - [打开记忆书架](https://reetyo.github.io/book-memory-pages/)
 - [《关键对话》原书第 3 版 · 四张记忆卡](https://reetyo.github.io/book-memory-pages/books/crucial-conversations/)
 
+- [《金钱心理学》· 四张记忆卡](https://reetyo.github.io/book-memory-pages/books/psychology-of-money/)
+
 ## 目录约定
 
 所有书籍统一放在 `books/` 下。`books/` 的每一个直接子文件夹都代表一本书，不混放不同书籍的页面或素材。
@@ -18,6 +20,7 @@ book-memory-pages/
 ├── AGENTS.md                        # 后续自动化维护也应遵守的规则
 ├── .nojekyll                        # GitHub Pages 按静态文件发布
 └── books/
+    ├── psychology-of-money/          # 《金钱心理学》：独立页面、说明与插画
     └── crucial-conversations/       # 《关键对话》
         ├── index.html               # 这本书的网页入口
         ├── dogs-storyboard.png      # 这本书专用的插画
@@ -41,7 +44,31 @@ book-memory-pages/
 
 | 书籍 | 版本 | 整理方式 | 文件夹 |
 | --- | --- | --- | --- |
-| 《关键对话》 | 原书第 3 版 | 何为关键对话、怎么准备、怎么进行、怎么结束；含 STATE、AMPP、ABC、CURE 等完整中文拆解 | [crucial-conversations](books/crucial-conversations/) |
+| 《关键对话》 | 原书第 3 版 | 四张记忆卡；完整中文话术拆解 | [crucial-conversations](books/crucial-conversations/) |
+| 《金钱心理学》 | 2026 全新增订版 · 22章 | 按第1–5、6–10、11–15、16–22章分为四卡 | [psychology-of-money](books/psychology-of-money/) |
+| 《投资最重要的事》 | 中信出版 · 2019 中文版 · 21章 | 6 张主题卡 | [most-important-thing](books/most-important-thing/) |
+| 《战胜华尔街》 | 机械工业出版社 · 2018 中文版 · 21章 | 6 张主题卡 | [beating-the-street](books/beating-the-street/) |
+| 《持续买入》 | 中文简体版 · 20章 | 5 张主题卡 | [just-keep-buying](books/just-keep-buying/) |
+| 《穷查理宝典》 | 中信出版 · 2021年7月全新增订本 | 7 张主题卡 | [poor-charlies-almanack](books/poor-charlies-almanack/) |
+| 《AI文明史·前史》 | 中信出版 · 2025 · 4章 | 5 张主题卡 | [ai-prehistory](books/ai-prehistory/) |
+| 《巴菲特致股东的信》 | 机械工业出版社 · 原书第4版 · 2018 | 7 张主题卡 | [buffett-shareholder-letters](books/buffett-shareholder-letters/) |
+| 《技术的本质》 | 浙江人民出版社 · 2018 经典版 · 11章 | 5 张主题卡 | [nature-of-technology](books/nature-of-technology/) |
+| 《非对称风险》 | 中信出版 · 2019 中文版 · 8卷19章 | 6 张主题卡 | [skin-in-the-game](books/skin-in-the-game/) |
+| 《清晰思考》 | 《清晰思考：将平凡时刻转化为非凡成果》· 2024 中文版 · 5部分 | 5 张主题卡 | [clear-thinking](books/clear-thinking/) |
+| 《认知觉醒》 | 人民邮电出版社 · 2020 中文版 · 8章 | 6 张主题卡 | [cognitive-awakening](books/cognitive-awakening/) |
+| 《逆风翻盘》 | 《逆风翻盘：危机时代的亿万赢家》· 中信出版 · 2024 | 5 张主题卡 | [chaos-kings](books/chaos-kings/) |
+| 《避风港》 | 《避风港：金融风暴中的安全投资》· 中信出版 · 2023 · 6章 | 5 张主题卡 | [safe-haven](books/safe-haven/) |
+| 《复杂》 | 《复杂：诞生于秩序与混沌边缘的科学》· 中信出版 · 2024 · 9章 | 6 张主题卡 | [complexity](books/complexity/) |
+| 《同步》 | 《同步：秩序如何从混沌中涌现》· 2018 中文版 · 10章 | 5 张主题卡 | [sync](books/sync/) |
+| 《涌现》 | 《涌现：从混沌到有序》· 浙江教育出版社 · 2022 · 11章 | 5 张主题卡 | [emergence](books/emergence/) |
+| 《万物本源》 | 《万物本源：生命、意识，以及存在意义的复杂科学》· 中信出版 · 2023 · 12章 | 5 张主题卡 | [notes-on-complexity](books/notes-on-complexity/) |
+| 《一如既往》 | 《一如既往：不变的人性与致富心态》· 中信出版 · 2024 | 6 张主题卡 | [same-as-ever](books/same-as-ever/) |
+| 《海龟交易法则》 | 中信出版 · 中文第4版 · 2021 · 14章 | 6 张主题卡 | [way-of-the-turtle](books/way-of-the-turtle/) |
+| 《主权个人》 | 1997年原著；参照1999英文版结构 · 中文助记转述 | 6 张主题卡 | [sovereign-individual](books/sovereign-individual/) |
+
+新增 19 本书共 107 张主题卡。每卡包含章节定位、原创场景、要点、自编例子、主动回忆题和行动提示。全部使用原生展开交互，兼容触屏、键盘和禁用 JavaScript 的浏览器。复习进度仅在本地保存。
+
+各书 `content.json` 为可编辑内容源；修改后可选运行 `python3 tools/build_books.py` 重新生成新版书架和这 19 本页面。现有两本页面不会被生成器改写。网页发布和阅读本身不需要 Python 或构建。
 
 ## 发布方式
 

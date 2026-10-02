@@ -1,0 +1,9 @@
+{
+  "slug": "ai-prehistory",
+  "prompt": "Use case: illustration-story. Asset type: book memory-card storyboard sprite sheet. Crisp high-quality ORIGINAL 2D cartoon animal/robot illustration, bold rounded dark outlines, flat soft colors, warm engaging expressive characters, clear silhouettes, sophisticated children's educational cartoon feel, NOT watercolor or realistic. Landscape. Exactly 6 equally sized rectangular panels in a precise 3 columns by 2 rows grid. Thin cream separators, no outer frame, every panel fills its entire cell. No text, numbers, labels, logos or speech bubbles. Center compositions safely within cells. Visual metaphors only. A little curious teal robot and a human girl exploring a future city museum. Six panels: 1 a rigid clockwork mechanism transforms into a growing neural garden; 2 little robots stand next to a human at a workbench to compare capabilities without numbers; 3 several workshops with different depth moats around them; 4 town citizens and robots deliberate around a circular table under a giant balance scale; 5 girl and robot together sign an unlettered scroll beneath stars; 6 an observatory watches possible futures as branching roads.",
+  "columns": 3,
+  "rows": 2,
+  "width": 1536,
+  "height": 1024,
+  "delivery": "WebP, quality 86; original dimensions and composition preserved"
+}

@@ -1,0 +1,9 @@
+{
+  "slug": "most-important-thing",
+  "prompt": "Use case: illustration-story. Asset type: mnemonic storyboard sprite sheet for a Chinese book-memory website. Create one polished crisp 2D cartoon image with charming ORIGINAL animal characters, confident rounded dark outlines, flat pastel colors with gentle shading, playful facial expressions, legible silhouettes, plenty of clear scene space. NOT watercolor, NOT realistic, no letters, words, numbers, logos, speech bubbles or captions. Landscape canvas. Exactly six equal rectangular panels in a precise 3 columns by 2 rows grid. Each panel fills its entire grid cell, with a thin clean cream dividing line and no outside border. Keep key content centrally inside each cell, no elements crossing cells. The scenes are visual metaphors, not precise diagrams. An observant fox value investor in an autumn market. Six panels in reading order: 1 fox looks through two nested magnifying glasses at a market stall; 2 fox weighs a fruit tree against coins on scales; 3 fox checks a bridge hidden cracked support while others see smooth road; 4 fox observes a huge swinging pendulum and seasons wheel; 5 fox waits calmly beside a tempting crowded auction; 6 fox protects a seedling with a broad safety buffer fence.",
+  "columns": 3,
+  "rows": 2,
+  "width": 1536,
+  "height": 1024,
+  "delivery": "WebP, quality 86; original dimensions and composition preserved"
+}

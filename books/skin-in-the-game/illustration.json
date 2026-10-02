@@ -1,0 +1,9 @@
+{
+  "slug": "skin-in-the-game",
+  "prompt": "Use case: illustration-story. Asset type: book memory-card storyboard sprite sheet. Crisp high-quality ORIGINAL 2D cartoon animal/robot illustration, bold rounded dark outlines, flat soft colors, warm engaging expressive characters, clear silhouettes, sophisticated children's educational cartoon feel, NOT watercolor or realistic. Landscape. Exactly 6 equally sized rectangular panels in a precise 3 columns by 2 rows grid. Thin cream separators, no outer frame, every panel fills its entire cell. No text, numbers, labels, logos or speech bubbles. Center compositions safely within cells. Visual metaphors only. An original cartoon mountain goat engineer wearing an orange safety vest and a teal fox consultant, at a bridge and town. Six panels: 1 goat stands under the bridge it built, sharing the consequence; 2 fox on a safe platform transfers a heavy sack of risk to other animals below; 3 a small group with rigid dietary choices influences a shared dining table; 4 an experienced scarred goat tests a real bridge while a polished costume expert waves a blank diploma; 5 town animals demonstrate care by repairing a real roof rather than posing; 6 goat refuses a shortcut that ends in an irreversible deep chasm.",
+  "columns": 3,
+  "rows": 2,
+  "width": 1536,
+  "height": 1024,
+  "delivery": "WebP, quality 86; original dimensions and composition preserved"
+}

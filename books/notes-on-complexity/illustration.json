@@ -1,0 +1,9 @@
+{
+  "slug": "notes-on-complexity",
+  "prompt": "Use case: illustration-story. Asset type: book mnemonic storyboard sprite sheet. Create a polished ORIGINAL cartoon storybook illustration, crisp bold friendly outlines, flat colors and soft shading, imaginative warm character scenes, no photorealism or watercolor. Landscape. Exactly six equally sized rectangular panels in a precise 3 columns by 2 rows grid. Thin light cream separators, no outer frame; center key subjects inside each cell; scenes cannot cross panels. No words, text, numbers, captions, formulas or logos. Educational VISUAL METAPHORS, not exact scientific diagrams; avoid implying supernatural claims as observed facts. A small original curious axolotl scientist with a friendly face explores nested scales of life. Six panels: 1 many small fish organize a school without a leader; 2 axolotl zooms from skin to friendly stylized cells; 3 molecules flow between a body outline and a forest ecosystem; 4 axolotl considers a starry quantum-scale field with a thought bubble containing a question-shaped curve but no literal text; 5 axolotl looks through a telescope and separately holds a philosophical thought bubble, keeping observation and speculation visually distinct; 6 peaceful interconnected pond world.",
+  "columns": 3,
+  "rows": 2,
+  "width": 1536,
+  "height": 1024,
+  "delivery": "WebP, quality 86; original dimensions and composition preserved"
+}

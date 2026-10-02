@@ -1,0 +1,9 @@
+{
+  "slug": "sync",
+  "prompt": "Use case: illustration-story. Asset type: book mnemonic storyboard sprite sheet. Create a polished ORIGINAL cartoon storybook illustration, crisp bold friendly outlines, flat colors and soft shading, imaginative warm character scenes, no photorealism or watercolor. Landscape. Exactly six equally sized rectangular panels in a precise 3 columns by 2 rows grid. Thin light cream separators, no outer frame; center key subjects inside each cell; scenes cannot cross panels. No words, text, numbers, captions, formulas or logos. Educational VISUAL METAPHORS, not exact scientific diagrams; avoid implying supernatural claims as observed facts. A friendly yellow firefly musician and small forest animals explore spontaneous rhythm at twilight. Six panels: 1 scattered fireflies begin glowing together without a conductor; 2 two pendulum clocks share a flexible wooden beam; 3 a sleepy fox observes sunrise and a bedside clock; 4 tiny oscillating particles and a swaying footbridge shown as two visual motifs; 5 a web of fireflies connected by short and long links spreads a glow; 6 glowing forest musical finale.",
+  "columns": 3,
+  "rows": 2,
+  "width": 1536,
+  "height": 1024,
+  "delivery": "WebP, quality 86; original dimensions and composition preserved"
+}

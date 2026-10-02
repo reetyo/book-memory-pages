@@ -1,0 +1,9 @@
+{
+  "slug": "way-of-the-turtle",
+  "prompt": "Use case: illustration-story. Asset type: book memory storyboard sprite sheet. Original high-quality 2D cartoon, crisp confident rounded outlines, gentle pastel colors and shading, expressive friendly characters, polished narrative compositions. Exactly six equal panels, precise 3 columns by 2 rows grid, landscape. Thin cream dividers, no outer frame; each scene centrally framed and fills its entire cell. No text, letters, numbers, captions, logos or watermarks. Not watercolor, not realistic. Visual metaphors for remembering ideas, not diagrams. A brave but methodical original cartoon sea turtle sailor in a navy jacket. Six panels: 1 turtle reads a geometric sailing rulebook instead of a fortune teller's crystal ball; 2 turtle waits at a channel entrance for a clear flag signal; 3 turtle reduces cargo for a tall wave route; 4 turtle assembles modular navigation map pieces into a complete route; 5 turtle tests maps in several different sea conditions inside small glass tanks; 6 turtle reviews its logbook calmly at the harbor.",
+  "columns": 3,
+  "rows": 2,
+  "width": 1536,
+  "height": 1024,
+  "delivery": "WebP, quality 86; original dimensions and composition preserved"
+}

@@ -1,0 +1,9 @@
+{
+  "slug": "complexity",
+  "prompt": "Use case: illustration-story. Asset type: book mnemonic storyboard sprite sheet. Create a polished ORIGINAL cartoon storybook illustration, crisp bold friendly outlines, flat colors and soft shading, imaginative warm character scenes, no photorealism or watercolor. Landscape. Exactly six equally sized rectangular panels in a precise 3 columns by 2 rows grid. Thin light cream separators, no outer frame; center key subjects inside each cell; scenes cannot cross panels. No words, text, numbers, captions, formulas or logos. Educational VISUAL METAPHORS, not exact scientific diagrams; avoid implying supernatural claims as observed facts. A team of original small animal scientists, a fox economist, owl physicist and rabbit biologist exploring a desert institute. Six panels: 1 diverse scientists meet at a round table; 2 fox sees a trail grow wider as more feet choose it; 3 rabbit observes many local insects organizing without a leader; 4 owl tests adaptable puzzle-like creatures; 5 a living garden sits between frozen rigid blocks and swirling disorder; 6 scientists examine a miniature evolving market inside a glass model and compare it to the real outside town.",
+  "columns": 3,
+  "rows": 2,
+  "width": 1536,
+  "height": 1024,
+  "delivery": "WebP, quality 86; original dimensions and composition preserved"
+}
